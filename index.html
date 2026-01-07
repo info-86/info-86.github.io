@@ -1,62 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>atoddx</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+can you do it <div style="text-align:center; width:100%;">
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
+  <!-- CLOCK -->
+  <svg width="1000" height="1000" viewBox="0 0 200 200"
+       style="display:block; margin:0 auto;">
+    
+    <!-- Clock face -->
+    <circle cx="100" cy="100" r="95"
+            fill="white" stroke="black" stroke-width="4"/>
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: white;
-      color: black;
-    }
+    <!-- Numbers -->
+    <g font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+       font-size="28"
+       fill="black"
+       text-anchor="middle"
+       dominant-baseline="middle">
+      <text x="100" y="28">12</text>
+      <text x="172" y="102">3</text>
+      <text x="100" y="178">6</text>
+      <text x="28" y="102">9</text>
+    </g>
 
-    #clock {
-      font-family: "SF Mono", Menlo, Consolas, monospace;
-      font-size: 160px;
-      letter-spacing: 6px;
-      line-height: 1;
-    }
+<!-- Wu Wei below the clock -->
+<div
+  style="
+    margin-top: 48px;
+    font-size: 56px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                 'PingFang TC', 'Hiragino Sans', 'Noto Sans CJK TC', sans-serif;
+    color: black;
+    letter-spacing: 4px;
+  ">
+  無為
+</div>
 
-    #wuwei {
-      margin-top: 48px;
-      font-size: 56px;
-      letter-spacing: 6px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                   "PingFang TC", "Hiragino Sans", "Noto Sans CJK TC", sans-serif;
-    }
-  </style>
-</head>
 
-<body>
 
-  <div>
-    <div id="clock">00:00</div>
-    <div id="wuwei">無為</div>
+    <!-- Hands -->
+    <line id="hourHand" x1="100" y1="100" x2="100" y2="60"
+          stroke="black" stroke-width="5" stroke-linecap="round"/>
+    <line id="minuteHand" x1="100" y1="100" x2="100" y2="45"
+          stroke="black" stroke-width="3" stroke-linecap="round"/>
+    <line id="secondHand" x1="100" y1="105" x2="100" y2="35"
+          stroke="black" stroke-width="1"/>
+
+    <!-- Center pivot -->
+    <circle cx="100" cy="100" r="4" fill="black"/>
+  </svg>
+
+
   </div>
+</div>
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2, "0");
-      const m = String(now.getMinutes()).padStart(2, "0");
-      document.getElementById("clock").textContent = `${h}:${m}`;
-    }
+<script>
+function updateAnalogClock() {
+  const now = new Date();
 
-    updateClock();
-    setInterval(updateClock, 1000);
-  </script>
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours() % 12;
 
-</body>
-</html>
+  document.getElementById("secondHand")
+    .setAttribute("transform", `rotate(${seconds * 6} 100 100)`);
+  document.getElementById("minuteHand")
+    .setAttribute("transform", `rotate(${minutes * 6 + seconds * 0.1} 100 100)`);
+  document.getElementById("hourHand")
+    .setAttribute("transform", `rotate(${hours * 30 + minutes * 0.5} 100 100)`);
+
+  document.getElementById("dateText").textContent =
+    now.toISOString().split("T")[0];
+}
+
+setInterval(updateAnalogClock, 1000);
+updateAnalogClock();
+</script>
