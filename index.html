@@ -3,7 +3,7 @@
   <!-- CLOCK -->
   <svg width="1000" height="1000" viewBox="0 0 200 200"
        style="display:block; margin:0 auto;">
-
+    
     <!-- Clock face -->
     <circle cx="100" cy="100" r="95"
             fill="white" stroke="black" stroke-width="4"/>
@@ -20,6 +20,21 @@
       <text x="28" y="102">9</text>
     </g>
 
+<!-- Wu Wei below the clock -->
+<div
+  style="
+    margin-top: 48px;
+    font-size: 56px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                 'PingFang TC', 'Hiragino Sans', 'Noto Sans CJK TC', sans-serif;
+    color: black;
+    letter-spacing: 8px;
+  ">
+  無為
+</div>
+
+
+
     <!-- Hands -->
     <line id="hourHand" x1="100" y1="100" x2="100" y2="60"
           stroke="black" stroke-width="5" stroke-linecap="round"/>
@@ -30,20 +45,31 @@
 
     <!-- Center pivot -->
     <circle cx="100" cy="100" r="4" fill="black"/>
-
   </svg>
 
-  <!-- Wu Wei BELOW the clock (HTML, not SVG) -->
-  <div
-    style="
-      margin-top: 48px;
-      font-size: 56px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                   'PingFang TC', 'Hiragino Sans', 'Noto Sans CJK TC', sans-serif;
-      color: black;
-      letter-spacing: 4px;
-    ">
-    無為
-  </div>
 
+  </div>
 </div>
+
+<script>
+function updateAnalogClock() {
+  const now = new Date();
+
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours() % 12;
+
+  document.getElementById("secondHand")
+    .setAttribute("transform", `rotate(${seconds * 6} 100 100)`);
+  document.getElementById("minuteHand")
+    .setAttribute("transform", `rotate(${minutes * 6 + seconds * 0.1} 100 100)`);
+  document.getElementById("hourHand")
+    .setAttribute("transform", `rotate(${hours * 30 + minutes * 0.5} 100 100)`);
+
+  document.getElementById("dateText").textContent =
+    now.toISOString().split("T")[0];
+}
+
+setInterval(updateAnalogClock, 1000);
+updateAnalogClock();
+</script>
