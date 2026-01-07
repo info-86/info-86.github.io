@@ -24,32 +24,20 @@ updateDigitalClock();
 </script>
 
 
-    <!-- Numbers -->
-    <g font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
-       font-size="18"
-       fill="black"
-       text-anchor="middle"
-       dominant-baseline="middle">
-      <text x="100" y="28">12</text>
-      <text x="172" y="102">3</text>
-      <text x="100" y="178">6</text>
-      <text x="28" y="102">9</text>
-    </g>
+  <script>
+function updateDigitalClock() {
+  const now = new Date();
 
-   
-    </text>
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
 
-    <!-- Hands -->
-    <line id="hourHand" x1="100" y1="100" x2="100" y2="60"
-          stroke="black" stroke-width="5" stroke-linecap="round"/>
-    <line id="minuteHand" x1="100" y1="100" x2="100" y2="45"
-          stroke="black" stroke-width="3" stroke-linecap="round"/>
-    <line id="secondHand" x1="100" y1="105" x2="100" y2="35"
-          stroke="black" stroke-width="1"/>
+  document.getElementById("digitalClock").textContent =
+    `${hours}:${minutes}`;
+}
 
-    <!-- Center pivot -->
-    <circle cx="100" cy="100" r="4" fill="black"/>
-  </svg>
+setInterval(updateDigitalClock, 1000);
+updateDigitalClock();
+</script>
 
 <!-- Wu Wei below the clock -->
 <div
