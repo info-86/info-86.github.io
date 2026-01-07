@@ -1,77 +1,62 @@
-<div style=<div style="
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>atoddx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
 
-<script>
-function updateDigitalClock() {
-  const now = new Date();
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: white;
+      color: black;
+    }
 
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
+    #clock {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 160px;
+      letter-spacing: 6px;
+      line-height: 1;
+    }
 
-  document.getElementById("digitalClock").textContent =
-    `${hours}:${minutes}`;
-}
+    #wuwei {
+      margin-top: 48px;
+      font-size: 56px;
+      letter-spacing: 6px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "PingFang TC", "Hiragino Sans", "Noto Sans CJK TC", sans-serif;
+    }
+  </style>
+</head>
 
-setInterval(updateDigitalClock, 1000);
-updateDigitalClock();
-</script>
+<body>
 
+  <div>
+    <div id="clock">00:00</div>
+    <div id="wuwei">無為</div>
+  </div>
 
   <script>
-function updateDigitalClock() {
-  const now = new Date();
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, "0");
+      const m = String(now.getMinutes()).padStart(2, "0");
+      document.getElementById("clock").textContent = `${h}:${m}`;
+    }
 
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
 
-  document.getElementById("digitalClock").textContent =
-    `${hours}:${minutes}`;
-}
-
-setInterval(updateDigitalClock, 1000);
-updateDigitalClock();
-</script>
-
-<!-- Wu Wei below the clock -->
-<div
-  style="
-    margin-top: px;
-    font-size: 100px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                 'PingFang TC', 'Hiragino Sans', 'Noto Sans CJK TC', sans-serif;
-    color: black;
-    letter-spacing: 4px;
-  ">
-  無為
-</div>
-
-
-<script>
-function updateAnalogClock() {
-  const now = new Date();
-
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours() % 12;
-
-  document.getElementById("secondHand")
-    .setAttribute("transform", `rotate(${seconds * 6} 100 100)`);
-  document.getElementById("minuteHand")
-    .setAttribute("transform", `rotate(${minutes * 6 + seconds * 0.1} 100 100)`);
-  document.getElementById("hourHand")
-    .setAttribute("transform", `rotate(${hours * 30 + minutes * 0.5} 100 100)`);
-
-  document.getElementById("dateText").textContent =
-    now.toISOString().split("T")[0];
-}
-
-setInterval(updateAnalogClock, 1000);
-updateAnalogClock();
-</script>
+</body>
+</html>
