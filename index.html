@@ -1,7 +1,7 @@
 <div style="text-align:center; width:100%;">
 
   <!-- CLOCK -->
-  <svg width="1000" height="1000" viewBox="0 0 200 200"
+  <svg width="1500" height="1500" viewBox="0 0 200 200"
        style="display:block; margin:0 auto;">
     
     <!-- Clock face -->
@@ -10,7 +10,7 @@
 
     <!-- Numbers -->
     <g font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
-       font-size="28"
+       font-size="18"
        fill="black"
        text-anchor="middle"
        dominant-baseline="middle">
@@ -20,20 +20,8 @@
       <text x="28" y="102">9</text>
     </g>
 
-<!-- Wu Wei below the clock -->
-<div
-  style="
-    margin-top: 48px;
-    font-size: 56px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                 'PingFang TC', 'Hiragino Sans', 'Noto Sans CJK TC', sans-serif;
-    color: black;
-    letter-spacing: 8px;
-  ">
-  無為
-</div>
-
-
+   
+    </text>
 
     <!-- Hands -->
     <line id="hourHand" x1="100" y1="100" x2="100" y2="60"
@@ -47,9 +35,15 @@
     <circle cx="100" cy="100" r="4" fill="black"/>
   </svg>
 
-
-  </div>
-</div>
+  <!-- Wu Wei (centered, orthodox) -->
+    <text x="100"
+          y="118"
+          font-family="serif"
+          font-size="40"
+          fill="black"
+          text-anchor="middle">
+      無為
+    </text>
 
 <script>
 function updateAnalogClock() {
