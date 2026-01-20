@@ -1,74 +1,116 @@
- <div style="text-align:center; width:100%;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Presence</title>
 
-  <!-- CLOCK -->
-  <svg width="500" height="750" viewBox="0 0 200 200"
-       style="display:block; margin:0 auto;"> 
-    
-    <!-- Clock face -->
-    <circle cx="100" cy="100" r="95"
-            fill="white" stroke="black" stroke-width=".5"/>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
 
-    <!-- Numbers -->
-    <g font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
-       font-size="20"
-       fill="black"
-       text-anchor="middle"
-       dominant-baseline="middle">
-      <text x="100" y="28">12</text>
-      <text x="172" y="102">3</text>
-      <text x="100" y="178">6</text>
-      <text x="28" y="102">9</text>
-    </g>
-   <-- Hands -->
-    <line id="hourHand" x1="100" y1="100" x2="100" y2="60"
-          stroke="black" stroke-width="2.5" stroke-linecap="round"/>
-    <line id="minuteHand" x1="100" y1="100" x2="100" y2="45"
-          stroke="black" stroke-width="2" stroke-linecap="round"/>
-    <line id="secondHand" x1="100" y1="105" x2="100" y2="35"
-          stroke="black" stroke-width="1"/>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: hsl(0, 0%, 96%);
+      transition: background-color 60s linear;
+    }
+  </style>
+</head>
 
-    <!-- Center pivot -->
-    <circle cx="100" cy="100" r="4" fill="black"/>
-  </svg>
+<body>
 
-   
-<!-- Wu Wei below the clock -->
-<div
-  style="
-    margin-top: 6px;
-    font-size: 60px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                 'PingFang TC', 'Hiragino Sans', 'Noto Sans CJK TC', sans-serif;
-    color: black;
-    letter-spacing: 4px;
-  ">
-  無為
-</div>
+  <div style="text-align:center; width:100%;">
 
+    <!-- CLOCK -->
+    <svg width="500" height="500" viewBox="0 0 200 200"
+         style="display:block; margin:0 auto;"> 
+      
+      <!-- Clock face -->
+      <circle cx="100" cy="100" r="95"
+              fill="white" stroke="black" stroke-width=".5"/>
 
+      <!-- Numbers -->
+      <g font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+         font-size="20"
+         fill="black"
+         text-anchor="middle"
+         dominant-baseline="middle">
+        <text x="100" y="28">12</text>
+        <text x="172" y="102">3</text>
+        <text x="100" y="178">6</text>
+        <text x="28" y="102">9</text>
+      </g>
+
+      <!-- Hands -->
+      <line id="hourHand" x1="100" y1="100" x2="100" y2="60"
+            stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+
+      <line id="minuteHand" x1="100" y1="100" x2="100" y2="45"
+            stroke="black" stroke-width="2" stroke-linecap="round"/>
+
+      <line id="secondHand" x1="100" y1="105" x2="100" y2="35"
+            stroke="black" stroke-width="1"/>
+
+      <!-- Center pivot -->
+      <circle cx="100" cy="100" r="4" fill="black"/>
+    </svg>
 
   </div>
-</div>
 
-<script>
-function updateAnalogClock() {
-  const now = new Date();
+  <!-- Clock logic -->
+  <script>
+    function updateAnalogClock() {
+      const now = new Date();
 
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours() % 12;
+      const seconds = now.getSeconds();
+      const minutes = now.getMinutes();
+      const hours = now.getHours() % 12;
 
-  document.getElementById("secondHand")
-    .setAttribute("transform", `rotate(${seconds * 6} 100 100)`);
-  document.getElementById("minuteHand")
-    .setAttribute("transform", `rotate(${minutes * 6 + seconds * 0.1} 100 100)`);
-  document.getElementById("hourHand")
-    .setAttribute("transform", `rotate(${hours * 30 + minutes * 0.5} 100 100)`);
+      document.getElementById("secondHand")
+        .setAttribute("transform", `rotate(${seconds * 6} 100 100)`);
 
-  document.getElementById("dateText").textContent =
-    now.toISOString().split("T")[0];
-}
+      document.getElementById("minuteHand")
+        .setAttribute(
+          "transform",
+          `rotate(${minutes * 6 + seconds * 0.1} 100 100)`
+        );
 
-setInterval(updateAnalogClock, 1000);
-updateAnalogClock();
-</script>
+      document.getElementById("hourHand")
+        .setAttribute(
+          "transform",
+          `rotate(${hours * 30 + minutes * 0.5} 100 100)`
+        );
+    }
+
+    updateAnalogClock();
+    setInterval(updateAnalogClock, 1000);
+  </script>
+
+  <!-- Apple-style background drift -->
+  <script>
+    function updateBackgroundSmooth() {
+      const now = new Date();
+
+      const minutes =
+        now.getHours() * 60 +
+        now.getMinutes() +
+        now.getSeconds() / 60;
+
+      const t = minutes / 1440;
+
+      const lightness =
+        94 + 6 * Math.cos((t - 0.5) * 2 * Math.PI);
+
+      document.body.style.backgroundColor =
+        `hsl(0, 0%, ${lightness.toFixed(2)}%)`;
+    }
+
+    updateBackgroundSmooth();
+    setInterval(updateBackgroundSmooth, 60 * 1000);
+  </script>
+
+</body>
+</html>
