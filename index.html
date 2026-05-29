@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Today</title>
+<title>Hello</title>
 
 <!-- Free Font: Libre Baskerville -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,16 +35,16 @@
   .page {
     width: 100%;
     min-height: 100vh;
-    padding-top: 42px;
+    padding-top: 34px;
     padding-left: 20px;
     padding-right: 20px;
     text-align: center;
   }
 
-  .title {
+  .hello {
     margin: 0 0 28px 0;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 42px;
+    font-weight: 400;
     line-height: 1.2;
   }
 
@@ -60,18 +60,28 @@
     margin: 0 auto;
   }
 
+  .today {
+    width: fit-content;
+    max-width: 430px;
+    margin: 34px auto 18px auto;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
   .time-text {
     width: fit-content;
-    max-width: 340px;
-    margin: 28px auto 0 auto;
+    max-width: 430px;
+    margin: 0 auto;
     text-align: left;
-    font-size: 15px;
-    line-height: 1.35;
+    font-size: 20px;
+    line-height: 1.45;
     font-weight: 400;
   }
 
   .time-text p {
-    margin: 0 0 18px 0;
+    margin: 0 0 22px 0;
   }
 
   .time-text p:last-child {
@@ -80,13 +90,13 @@
 
   @media (max-width: 600px) {
     .page {
-      padding-top: 32px;
+      padding-top: 28px;
       padding-left: 18px;
       padding-right: 18px;
     }
 
-    .title {
-      font-size: 18px;
+    .hello {
+      font-size: 34px;
       margin-bottom: 24px;
     }
 
@@ -94,10 +104,17 @@
       width: 300px;
     }
 
+    .today {
+      max-width: 330px;
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 16px;
+    }
+
     .time-text {
-      max-width: 300px;
-      font-size: 14px;
-      margin-top: 24px;
+      max-width: 330px;
+      font-size: 18px;
+      line-height: 1.45;
     }
   }
 </style>
@@ -107,8 +124,8 @@
 
 <main class="page">
 
-  <!-- Title -->
-  <h1 class="title">Today</h1>
+  <!-- Top Greeting -->
+  <h1 class="hello">Hello</h1>
 
   <!-- Analog Clock -->
   <div class="clock-wrap">
@@ -182,6 +199,9 @@
 
     </svg>
   </div>
+
+  <!-- Today title above poem -->
+  <div class="today">Today</div>
 
   <!-- Text below clock -->
   <section class="time-text" aria-label="Today statement">
