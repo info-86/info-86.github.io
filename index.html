@@ -1,129 +1,247 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hi there.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Libre Baskerville -->
+<title>Today</title>
+
+<!-- Free Font: Libre Baskerville -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
   body {
     margin: 0;
     padding: 0;
-    background: white;
-    font-family: 'Libre Baskerville', serif;
+    min-height: 100%;
+    background: #ffffff;
+    color: #000000;
+    font-family: "Libre Baskerville", Georgia, serif;
   }
 
-  #greeting {
+  body {
+    display: flex;
+    justify-content: center;
+  }
+
+  .page {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 42px;
+    padding-left: 20px;
+    padding-right: 20px;
     text-align: center;
-    font-size: 48px;
-    margin-top: 40px;
-    margin-bottom: 10px;
+  }
+
+  .title {
+    margin: 0 0 28px 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .clock-wrap {
+    width: 100%;
+    text-align: center;
+  }
+
+  .clock {
+    display: block;
+    width: 360px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .time-text {
+    width: fit-content;
+    max-width: 340px;
+    margin: 28px auto 0 auto;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 400;
+  }
+
+  .time-text p {
+    margin: 0 0 18px 0;
+  }
+
+  .time-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .page {
+      padding-top: 32px;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .title {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .clock {
+      width: 300px;
+    }
+
+    .time-text {
+      max-width: 300px;
+      font-size: 14px;
+      margin-top: 24px;
+    }
   }
 </style>
 </head>
 
 <body>
 
-<!-- Greeting -->
-<div id="greeting">Hi there.</div>
+<main class="page">
 
-<!-- Clock -->
-<div style="text-align:center; width:100%;">
+  <!-- Title -->
+  <h1 class="title">Today</h1>
 
-  <svg width="500" height="750" viewBox="0 0 200 200"
-       style="display:block; margin:0 auto;">
+  <!-- Analog Clock -->
+  <div class="clock-wrap">
+    <svg class="clock" viewBox="0 0 200 200" aria-label="Analog clock">
 
-    <!-- Clock face -->
-    <circle cx="100" cy="100" r="95"
-            fill="white" stroke="black" stroke-width="0.5"/>
+      <!-- Clock face -->
+      <circle
+        cx="100"
+        cy="100"
+        r="95"
+        fill="white"
+        stroke="black"
+        stroke-width="0.5"
+      />
 
-    <!-- Numbers -->
-    <g
-      font-family="'Libre Baskerville', serif"
-      font-size="20"
-      fill="black"
-      text-anchor="middle"
-      dominant-baseline="middle">
-      <text x="100" y="28">12</text>
-      <text x="172" y="102">3</text>
-      <text x="100" y="178">6</text>
-      <text x="28" y="102">9</text>
-    </g>
+      <!-- Clock numbers -->
+      <g
+        font-family="'Libre Baskerville', Georgia, serif"
+        font-size="20"
+        font-weight="700"
+        fill="black"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        <text x="100" y="28">12</text>
+        <text x="172" y="102">3</text>
+        <text x="100" y="178">6</text>
+        <text x="28" y="102">9</text>
+      </g>
 
-    <!-- Hands -->
-    <line id="hourHand" x1="100" y1="100" x2="100" y2="60"
-          stroke="black" stroke-width="2.5" stroke-linecap="round"/>
-    <line id="minuteHand" x1="100" y1="100" x2="100" y2="45"
-          stroke="black" stroke-width="2" stroke-linecap="round"/>
-    <line id="secondHand" x1="100" y1="105" x2="100" y2="35"
-          stroke="black" stroke-width="1"/>
+      <!-- Clock hands -->
+      <line
+        id="hourHand"
+        x1="100"
+        y1="100"
+        x2="100"
+        y2="62"
+        stroke="black"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
 
-    <!-- Center pivot -->
-    <circle cx="100" cy="100" r="4" fill="black"/>
+      <line
+        id="minuteHand"
+        x1="100"
+        y1="100"
+        x2="100"
+        y2="45"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
 
-  </svg>
+      <line
+        id="secondHand"
+        x1="100"
+        y1="105"
+        x2="100"
+        y2="35"
+        stroke="black"
+        stroke-width="1"
+      />
 
-</div>
+      <!-- Center pivot -->
+      <circle
+        cx="100"
+        cy="100"
+        r="4"
+        fill="black"
+      />
+
+    </svg>
+  </div>
+
+  <!-- Text below clock -->
+  <section class="time-text" aria-label="Today statement">
+
+    <p>
+      We see multiple apples.<br>
+      Multiple objects.<br>
+      Multiple places.
+    </p>
+
+    <p>
+      But never multiple days.
+    </p>
+
+    <p>
+      Calendars are not days.<br>
+      Rulers are not what they measure.
+    </p>
+
+    <p>
+      There is only one day.
+    </p>
+
+    <p>
+      Now.
+    </p>
+
+  </section>
+
+</main>
 
 <script>
-/* CLOCK */
-function updateAnalogClock() {
-  const now = new Date();
+  function updateAnalogClock() {
+    const now = new Date();
 
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours() % 12;
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours() % 12;
 
-  document.getElementById("secondHand")
-    .setAttribute("transform", `rotate(${seconds * 6} 100 100)`);
+    const secondDegrees = seconds * 6;
+    const minuteDegrees = minutes * 6 + seconds * 0.1;
+    const hourDegrees = hours * 30 + minutes * 0.5;
 
-  document.getElementById("minuteHand")
-    .setAttribute("transform", `rotate(${minutes * 6 + seconds * 0.1} 100 100)`);
+    document
+      .getElementById("secondHand")
+      .setAttribute("transform", `rotate(${secondDegrees} 100 100)`);
 
-  document.getElementById("hourHand")
-    .setAttribute("transform", `rotate(${hours * 30 + minutes * 0.5} 100 100)`);
-}
+    document
+      .getElementById("minuteHand")
+      .setAttribute("transform", `rotate(${minuteDegrees} 100 100)`);
 
-setInterval(updateAnalogClock, 1000);
-updateAnalogClock();
-
-/* GREETING BY COUNTRY */
-async function setGreetingByCountry() {
-  try {
-    const response = await fetch("https://ipapi.co/json/");
-    const data = await response.json();
-
-    const greetings = {
-      FR: "Bonjour",
-      ES: "Hola",
-      DE: "Hallo",
-      IT: "Ciao",
-      PT: "Olá",
-      NL: "Hallo",
-      SE: "Hej",
-      NO: "Hei",
-      DK: "Hej",
-      JP: "こんにちは",
-      CN: "你好",
-      KR: "안녕하세요",
-      RU: "Здравствуйте"
-    };
-
-    const country = data.country_code;
-    const greeting = greetings[country] || "Hello";
-
-    document.getElementById("greeting").textContent = greeting;
-  } catch (e) {
-    document.getElementById("greeting").textContent = "Hi there.";
+    document
+      .getElementById("hourHand")
+      .setAttribute("transform", `rotate(${hourDegrees} 100 100)`);
   }
-}
 
-setGreetingByCountry();
+  setInterval(updateAnalogClock, 1000);
+  updateAnalogClock();
 </script>
 
 </body>
 </html>
+```
