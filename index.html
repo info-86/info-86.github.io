@@ -1,5 +1,6 @@
 
-
+```html id="full-today-clock-page"
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -63,7 +64,7 @@
   .today {
     width: fit-content;
     max-width: 430px;
-    margin: 34px auto 18px auto;
+    margin: 34px auto 1in auto;
     text-align: left;
     font-size: 22px;
     font-weight: 700;
@@ -81,11 +82,7 @@
   }
 
   .time-text p {
-    margin: 0 0 22px 0;
-  }
-
-  .time-text p:last-child {
-    margin-bottom: 0;
+    margin: 0;
   }
 
   @media (max-width: 600px) {
@@ -108,7 +105,7 @@
       max-width: 330px;
       font-size: 20px;
       margin-top: 30px;
-      margin-bottom: 16px;
+      margin-bottom: 72px;
     }
 
     .time-text {
@@ -203,32 +200,18 @@
   <!-- Today title above poem -->
   <div class="today">Today</div>
 
-  <!-- Text below clock -->
+  <!-- Poem -->
   <section class="time-text" aria-label="Today statement">
-
     <p>
       We see multiple apples.<br>
       Multiple objects.<br>
-      Multiple places.
-    </p>
-
-    <p>
-      But never multiple days.
-    </p>
-
-    <p>
+      Multiple places.<br>
+      But never multiple days.<br>
       Calendars are not days.<br>
-      Rulers are not what they measure.
-    </p>
-
-    <p>
-      There is only one day.
-    </p>
-
-    <p>
+      Rulers are not what they measure.<br>
+      There is only one day.<br>
       Now.
     </p>
-
   </section>
 
 </main>
@@ -267,3 +250,6 @@
 ```
 
 
+```text
+index.html
+```
