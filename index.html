@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,8 @@
 <style>
   body { margin: 0; padding: 0; background: white; font-family: 'Libre Baskerville', serif; }
   #greeting { text-align: center; font-size: 48px; margin-top: 40px; margin-bottom: 10px; }
-  #poem { text-align: center; max-width: 480px; margin: 40px auto 20px auto; padding: 0 20px; }
+  #poem-wrap { text-align: center; width: 100%; margin: 40px auto 20px auto; }
+  #poem { text-align: left; max-width: 480px; display: inline-block; padding: 0 20px; }
   #poem h2 { font-size: 22px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 24px; }
   #poem p { font-size: 17px; line-height: 2; margin: 0 0 8px 0; }
   #poem .question { font-style: italic; margin-top: 20px; font-size: 18px; }
@@ -43,15 +45,17 @@
   </svg>
 </div>
 
-<<div id="poem">
-  <h2>Today</h2>
-  <p>A clock is measurement.</p>
-  <p>A calendar is organization.</p>
-  <p> Your hours is your time.</p>
-  <br>
-  <p>A pet tortoise may go to your funeral</p>
-  <p>before you go to theirs.</p>
-  <p class="question">What hour are you on?</p>
+<div id="poem-wrap">
+  <div id="poem">
+    <h2>Today</h2>
+    <p>Clocks are measurement.</p>
+    <p>Calendars are organization.</p>
+    <p>Your lived hours is your existence.</p>
+    <br>
+    <p>A pet tortoise may go to your funeral</p>
+    <p>before you go to theirs.</p>
+    <p class="question">What hour are you on?</p>
+  </div>
 </div>
 
 <div id="calculator">
@@ -137,3 +141,6 @@ function calculate() {
 </script>
 </body>
 </html>
+```
+
+Copy everything between the triple backticks and paste it into your file.
