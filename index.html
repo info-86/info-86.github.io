@@ -111,7 +111,7 @@ async function initLocation() {
     const data = await response.json();
     userCountry = data.country_code || "DEFAULT";
     userCountryName = data.country_name || "your region";
-    document.getElementById("greeting").textContent = greetings[userCountry] || "Today..";
+    document.getElementById("greeting").textContent = greetings[userCountry] || "Today.";
     document.getElementById("location-note").textContent = "Using life expectancy data for " + userCountryName + ".";
   } catch (e) {
     document.getElementById("greeting").textContent = "Today.";
