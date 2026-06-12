@@ -308,18 +308,10 @@ function submitForm() {
     return;
   }
  
-  const subject = encodeURIComponent("AtoddxMedia — Start navigating (" + name + ")");
-  const body = encodeURIComponent(
-    "Name: " + name + "\n\n" +
-    "If no obstacles — what would you choose:\n" + (want || "—") + "\n\n" +
-    "What they think but never say:\n" + (honest || "—") + "\n\n" +
-    "The one obstacle:\n" + (block || "—") + "\n\n" +
-    "Resources for private reflection:\n" + (resources || "—") + "\n\n" +
-    "Phone: " + (phone || "—") + "\n" +
-    "Email: " + email
+ 
   );
  
-  window.location.href = "mailto:info@atoddx.com?subject=" + subject + "&body=" + body;
+
  
   document.getElementById("cta-form").style.display = "none";
   document.getElementById("cta-thanks").style.display = "block";
