@@ -1,4 +1,4 @@
-
+@@ -1,157 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,29 +10,31 @@
 <style>
   body { margin: 0; padding: 0; background: white; font-family: 'Libre Baskerville', serif; }
   #greeting { text-align: center; font-size: 48px; margin-top: 40px; margin-bottom: 10px; }
-  #poem-wrap { text-align: center; width: 100%; margin: 40px auto 20px auto; }
+  #digital-clock { text-align: center; font-family: 'Courier New', Courier, monospace; font-size: 44px; letter-spacing: 0.15em; margin: 0 auto 30px auto; color: black; }
+  #poem-wrap { text-align: center; width: 100%; margin: 20px auto 20px auto; }
   #poem { text-align: left; max-width: 480px; display: inline-block; padding: 0 20px; }
-  #poem h2 { font-size: 40px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 24px; }
-  #poem p { font-size: 40px; line-height: 2; margin: 0 0 8px 0; }
-  #poem .question { font-style: italic; margin-top: 20px; font-size: 35px; }
-  #calculator { max-width: 480px; margin: 30px auto 60px auto; padding: 0 20px; text-align: center; }
-  #calculator input[type="date"] { font-family: 'Libre Baskerville', serif; font-size: 30px; padding: 8px 12px; border: 1px solid black; background: white; margin-bottom: 12px; width: 100%; max-width: 300px; }
-  #calculator button { font-family: 'Libre Baskerville', serif; font-size: 35px; padding: 8px 24px; border: 1px solid black; background: white; cursor: pointer; display: block; margin: 0 auto 24px auto; }
+  #poem h2 { font-size: 22px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 24px; }
+  #poem p { font-size: 17px; line-height: 2; margin: 0 0 8px 0; }
+  #poem .question { font-style: italic; margin-top: 20px; font-size: 18px; }
+  #calculator { max-width: 480px; margin: 30px auto 20px auto; padding: 0 20px; text-align: center; }
+  #calculator input[type="date"] { font-family: 'Libre Baskerville', serif; font-size: 16px; padding: 8px 12px; border: 1px solid black; background: white; margin-bottom: 12px; width: 100%; max-width: 300px; }
+  #calculator button { font-family: 'Libre Baskerville', serif; font-size: 16px; padding: 8px 24px; border: 1px solid black; background: white; cursor: pointer; display: block; margin: 0 auto 24px auto; }
   #calculator button:hover { background: black; color: white; }
-  #result { font-size: 25px; line-height: 1.8; display: none; }
-  #result .hours-lived { font-size: 40px; font-weight: 700; display: block; margin: 10px 0; }
-  #result .hours-remaining { font-size: 40px; display: block; margin: 10px 0; }
+  #result { font-size: 17px; line-height: 1.8; display: none; }
+  #result .hours-lived { font-size: 32px; font-weight: 700; display: block; margin: 10px 0; }
+  #result .hours-remaining { font-size: 18px; display: block; margin: 10px 0; }
   #location-note { font-size: 13px; color: #777; margin-top: 8px; }
+  #copyright { text-align: center; font-size: 12px; color: #999; padding: 20px 0 40px 0; }
 </style>
 </head>
 <body>
 
-<div id="greeting">Today </div>
+<div id="greeting">Hi there.</div>
 
 <div style="text-align:center; width:100%;">
   <svg width="500" height="750" viewBox="0 0 200 200" style="display:block; margin:0 auto;">
     <circle cx="100" cy="100" r="95" fill="white" stroke="black" stroke-width="0.5"/>
-    <g font-family="'Libre Baskerville', serif" font-size="60" fill="black" text-anchor="middle" dominant-baseline="middle">
+    <g font-family="'Libre Baskerville', serif" font-size="20" fill="black" text-anchor="middle" dominant-baseline="middle">
       <text x="100" y="28">12</text>
       <text x="172" y="102">3</text>
       <text x="100" y="178">6</text>
@@ -45,17 +47,17 @@
   </svg>
 </div>
 
+<div id="digital-clock">00:00:00 AM</div>
+
 <div id="poem-wrap">
   <div id="poem">
-    <p>Clocks.</p>
-    <p>Measurement.</p>
-    <p>Calendars.</p>
-    <p>Organization.</p>
-    <p>Hours.</p>
-    <p>Existence.</p>
-    <p>Your pet tortoise may attend your funeral</p>
+    <h2>Today</h2>
+    <p>Clocks. Measurement.</p>
+    <p>Calendars. Organization.</p>
+    <p>Hours. Existence.</p>
+    <p>A pet tortoise may attend your funeral</p>
     <p>before you attend theirs.</p>
-    <p class="question">What's your hour?</p>
+    <p class="question">What hour are you on?</p>
   </div>
 </div>
 
@@ -64,12 +66,15 @@
   <button onclick="calculate()">Calculate</button>
   <div id="location-note"></div>
   <div id="result">
+    <span>Where you out?</span>
     <span>Where you at?</span>
     <span class="hours-lived" id="hoursLived"></span>
     <span class="hours-remaining" id="hoursRemainingText"></span>
-    <span id="percentText" style="font-size:40px; color:#555;"></span>
+    <span id="percentText" style="font-size:15px; color:#555;"></span>
   </div>
 </div>
+
+<div id="copyright">&copy; 2025 True Self Quest LLC. All rights reserved.</div>
 
 <script>
 const lifeExpectancy = {
@@ -97,31 +102,41 @@ const greetings = {
 };
 let userCountry = "DEFAULT";
 let userCountryName = "your region";
+
 async function initLocation() {
   try {
     const response = await fetch("https://ipapi.co/json/");
     const data = await response.json();
     userCountry = data.country_code || "DEFAULT";
     userCountryName = data.country_name || "your region";
-    document.getElementById("greeting").textContent = greetings[userCountry] || "Today.";
+    document.getElementById("greeting").textContent = greetings[userCountry] || "Hi there.";
     document.getElementById("location-note").textContent = "Using life expectancy data for " + userCountryName + ".";
   } catch (e) {
-    document.getElementById("greeting").textContent = "Today.";
+    document.getElementById("greeting").textContent = "Hi there.";
     document.getElementById("location-note").textContent = "Using global average life expectancy.";
   }
 }
 initLocation();
-function updateAnalogClock() {
+
+function pad(n) { return n < 10 ? "0" + n : n; }
+
+function updateClocks() {
   const now = new Date();
   const seconds = now.getSeconds();
   const minutes = now.getMinutes();
-  const hours = now.getHours() % 12;
+  const hours24 = now.getHours();
+  const hours12 = hours24 % 12 || 12;
+  const ampm = hours24 >= 12 ? "PM" : "AM";
+  const hours12analog = hours24 % 12;
+
   document.getElementById("secondHand").setAttribute("transform", "rotate(" + (seconds * 6) + " 100 100)");
   document.getElementById("minuteHand").setAttribute("transform", "rotate(" + (minutes * 6 + seconds * 0.1) + " 100 100)");
-  document.getElementById("hourHand").setAttribute("transform", "rotate(" + (hours * 30 + minutes * 0.5) + " 100 100)");
+  document.getElementById("hourHand").setAttribute("transform", "rotate(" + (hours12analog * 30 + minutes * 0.5) + " 100 100)");
+  document.getElementById("digital-clock").textContent = pad(hours12) + ":" + pad(minutes) + ":" + pad(seconds) + " " + ampm;
 }
-setInterval(updateAnalogClock, 1000);
-updateAnalogClock();
+setInterval(updateClocks, 1000);
+updateClocks();
+
 function calculate() {
   const dob = document.getElementById("dob").value;
   if (!dob) return;
@@ -135,12 +150,10 @@ function calculate() {
   document.getElementById("hoursLived").textContent = hoursLived.toLocaleString();
   document.getElementById("hoursRemainingText").textContent = hoursRemaining > 0
     ? hoursRemaining.toLocaleString() + " hours remain based on " + lifeYears + " year life expectancy in " + userCountryName + "."
-    : "You have outlived the " + lifeYears + " year estimate for " + userCountryName + ".";
+    : "You have outlived the " + lifeYears + " year estimate for " + userCountryName + "."; 
   document.getElementById("percentText").textContent = percent + "% of " + Math.floor(totalHours).toLocaleString() + " total hours.";
   document.getElementById("result").style.display = "block";
 }
 </script>
 </body>
 </html>
-
-© 2025 Atoddx Media All rights reserved.
