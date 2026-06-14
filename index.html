@@ -15,14 +15,14 @@
   #poem { text-align: left; max-width: 480px; display: inline-block; padding: 0 20px; }
   #poem h2 { font-size: 32px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 24px; }
   #poem p { font-size: 30px; line-height: 2; margin: 0 0 8px 0; }
-  #poem .question { font-style: italic; margin-top: 20px; font-size: 25px; }
+  #poem .question { font-style: italic; margin-top: 40px; font-size: 25px; }
   #calculator { max-width: 480px; margin: 30px auto 20px auto; padding: 0 20px; text-align: center; }
   #calculator input[type="date"] { font-family: 'Libre Baskerville', serif; font-size: 16px; padding: 8px 12px; border: 1px solid black; background: white; margin-bottom: 12px; width: 100%; max-width: 300px; }
   #calculator button { font-family: 'Libre Baskerville', serif; font-size: 16px; padding: 8px 24px; border: 1px solid black; background: white; cursor: pointer; display: block; margin: 0 auto 24px auto; }
   #calculator button:hover { background: black; color: white; }
   #result { font-size: 17px; line-height: 1.8; display: none; }
   #result .hours-lived { font-size: 32px; font-weight: 700; display: block; margin: 10px 0; }
-  #result .hours-remaining { font-size: 18px; display: block; margin: 10px 0; }
+  #result .hours-remaining { font-size: 40px; display: block; margin: 10px 0; }
   #location-note { font-size: 25px; color: #777; margin-top: 8px; }
   #copyright { text-align: center; font-size: 12px; color: #999; padding: 20px 0 40px 0; }
 </style>
@@ -57,7 +57,7 @@
     <p>Hours. Existence.</p>
     <p>A pet tortoise may attend your funeral</p>
     <p>before you attend theirs.</p>
-    <p class="question">What is your hour?</p>
+    <p class="question">What's your hour?</p>
   </div>
 </div>
 
@@ -66,11 +66,11 @@
   <button onclick="calculate()">Calculate</button>
   <div id="location-note"></div>
   <div id="result">
-    <span>?</span>
+    <span></span>
     <span>Where you at?</span>
     <span class="hours-lived" id="hoursLived"></span>
     <span class="hours-remaining" id="hoursRemainingText"></span>
-    <span id="percentText" style="font-size:15px; color:#555;"></span>
+    <span id="percentText" style="font-size:40px; color:#555;"></span>
   </div>
 </div>
 
