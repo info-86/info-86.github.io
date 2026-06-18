@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  body { margin: 0; padding: 0; background: white; font-family: 'Libre Baskerville', serif; color: black; transition: background 1.5s ease, color 1.5s ease; }
+  body { margin: 0; padding: 0; background: white; font-family: 'Libre Baskerville', serif; color: black; }
   
-  /* Initial Layout Containers */
+  /* Page One Layout */
   #page-one { display: block; width: 100%; }
   #greeting { text-align: center; font-size: 48px; margin-top: 40px; margin-bottom: 10px; }
   #digital-clock { text-align: center; font-family: 'Courier New', Courier, monospace; font-size: 44px; letter-spacing: 0.15em; margin: 0 auto 30px auto; color: black; }
@@ -23,24 +23,23 @@
   
   #calculator { max-width: 480px; margin: 30px auto 20px auto; padding: 0 20px; text-align: center; }
   #calculator input[type="date"] { font-family: 'Libre Baskerville', serif; font-size: 16px; padding: 8px 12px; border: 1px solid black; background: white; margin-bottom: 12px; width: 100%; max-width: 300px; }
-  #calculator button { font-family: 'Libre Baskerville', serif; font-size: 16px; padding: 8px 24px; border: 1px solid black; background: white; cursor: pointer; display: block; margin: 0 auto 24px auto; transition: background 0.2s, color 0.2s; }
+  #calculator button { font-family: 'Libre Baskerville', serif; font-size: 16px; padding: 8px 24px; border: 1px solid black; background: white; cursor: pointer; display: block; margin: 0 auto 24px auto; }
   #calculator button:hover { background: black; color: white; }
   #location-note { font-size: 25px; color: #777; margin-top: 8px; }
-  #copyright { text-align: center; font-size: 12px; color: #999; padding: 20px 0 40px 0; }
-
-  /* Second Page Layout (Fading Gray Space) */
+  
+  /* Page Two Layout (Strict Black and White) */
   #page-two { 
     display: none; 
     width: 100%; 
     min-height: 100vh; 
-    padding: 40px 24px 80px 24px;
+    padding: 40px 24px 40px 24px;
     text-align: center;
+    background: white;
   }
   .big-number-container {
     width: 100%;
     margin: 40px auto;
   }
-  /* Dynamically fills screen space left to right */
   .massive-hours { 
     font-size: 14vw; 
     font-weight: 700; 
@@ -53,16 +52,19 @@
   
   .hours-label { font-size: 28px; margin-top: 10px; display: block; letter-spacing: 0.05em; }
   
-  .manifesto-wrap { text-align: left; max-width: 520px; margin: 60px auto 0 auto; line-height: 1.8; }
-  .manifesto-wrap p { font-size: 22px; margin-bottom: 24px; }
-  .manifesto-wrap ul { list-style-type: none; padding: 0; margin: 0 0 32px 0; }
-  .manifesto-wrap li { font-size: 24px; font-weight: 700; margin-bottom: 12px; padding-left: 10px; border-left: 3px solid black; }
-  .manifesto-wrap .final-question { font-size: 32px; font-weight: 700; margin-top: 60px; display: block; border: none; padding: 0; text-align: center; }
+  /* Matching the exact structural layout and typography of the poem */
+  .manifesto-wrap { text-align: left; max-width: 480px; display: inline-block; padding: 0 20px; margin-top: 60px; width: 100%; }
+  .manifesto-wrap p { font-size: 30px; line-height: 2; margin: 0 0 8px 0; }
+  .manifesto-wrap ul { list-style-type: none; padding: 0; margin: 0 0 8px 0; }
+  .manifesto-wrap li { font-size: 30px; line-height: 2; margin: 0 0 8px 0; }
+  .manifesto-wrap .final-question { font-style: italic; margin-top: 40px; font-size: 35px; text-align: left; }
+
+  /* Universal Copyright Style */
+  .copyright-notice { text-align: center; font-size: 12px; color: #999; padding: 20px 0 40px 0; width: 100%; }
 </style>
 </head>
 <body>
 
-<!-- PAGE ONE: LANDING ARCHITECTURE -->
 <div id="page-one">
   <div id="greeting">Hi there.</div>
 
@@ -102,31 +104,36 @@
     <div id="location-note"></div>
   </div>
 
-  <div id="copyright">&copy; 2025 Atoddx Media All rights reserved.</div>
+  <div class="copyright-notice">&copy; 2026 Atoddx Media All rights reserved.</div>
 </div>
 
-<!-- PAGE TWO: REFLECTION AREA -->
 <div id="page-two">
   <div class="big-number-container">
     <span class="massive-hours" id="hoursRemainingDisplay">000,000</span>
     <span class="hours-label">Hours Remaining</span>
   </div>
 
-  <div class="manifesto-wrap">
-    <p>While asleep.</p>
-    
-    <ul>
-      <li>The heart beats.</li>
-      <li>The lungs Inhale.</li>
-      <li>The lungs Exhale.</li>
-      <li>The liver filters.</li>
-      <li>The brain processes.</li>
-    </ul>
+  <div style="text-align: center; width: 100%;">
+    <div class="manifesto-wrap">
+      <p>While asleep.</p>
+      
+      <ul>
+        <li>The heart beats.</li>
+        <li>The lungs Inhale.</li>
+        <li>The lungs Exhale.</li>
+        <li>The liver filters.</li>
+        <li>The brain processes.</li>
+      </ul>
 
-    <p>No Wi-Fi. <br>No software patch. <br>No update.</p>
+      <p>No Wi-Fi.</p>
+      <p>No software patch.</p>
+      <p>No update.</p>
 
-    <p class="final-question">What are you going to do?</p>
+      <p class="final-question">What are you going to do?</p>
+    </div>
   </div>
+
+  <div class="copyright-notice" style="margin-top: 80px;">&copy; 2026 Atoddx Media All rights reserved.</div>
 </div>
 
 <script>
@@ -207,18 +214,11 @@ function calculate() {
   const hoursLived = Math.floor((now - birth) / (1000 * 60 * 60));
   const hoursRemaining = Math.max(0, Math.floor(totalHours - hoursLived));
 
-  // Update Page 2 Elements
   document.getElementById("hoursRemainingDisplay").textContent = hoursRemaining.toLocaleString();
 
-  // Handle Page Transition and Gradient Application
   document.getElementById("page-one").style.display = "none";
-  const pageTwo = document.getElementById("page-two");
-  pageTwo.style.display = "block";
-  
-  // Transition background smoothly down to an industrial slate grey
-  setTimeout(() => {
-    document.body.style.background = "linear-gradient(to bottom, #ffffff 0%, #d3d3d3 50%, #808080 100%)";
-  }, 50);
+  document.getElementById("page-two").style.display = "block";
+  window.scrollTo(0, 0);
 }
 </script>
 </body>
