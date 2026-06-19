@@ -151,7 +151,7 @@ const lifeExpectancy = {
   ZA: 64.9, NG: 55.2, KE: 67.1, GH: 64.1, ET: 66.6,
   EG: 72.0, MA: 74.3, TN: 76.7, DZ: 77.1, LY: 73.6,
   SA: 75.8, AE: 78.0, IL: 83.0, TR: 77.7, IR: 76.7,
-  IQ: 70.8, SY: 72.7, JO: 74.9, LB: 78.9, KW: 75.5,
+  IQ: 70.8, SY: 72.7, JO: 74.9, LB: 78.9, Kuwait: 75.5,
   TH: 77.2, VN: 75.4, PH: 71.2, ID: 71.7, MY: 76.9,
   SG: 83.6, PK: 67.3, BD: 72.6, LK: 77.0, NP: 70.5,
   DEFAULT: 73.0
@@ -206,14 +206,24 @@ setInterval(updateClocks, 1000);
 updateClocks();
 
 function calculate() {
-  const dob = document.getElementById("dob").value;
-  if (!dob) return;
+  const dobValue = document.getElementById("dob").value;
+  if (!dobValue) return;
+  
+  // Explicit breakdown of YYYY-MM-DD format to bypass browser native timezone engine bugs
+  const parts = dobValue.split("-");
+  const year = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1; // JS months are index 0-11
+  const day = parseInt(parts[2], 10);
+
+  // Set birth exactly using absolute UTC epoch calculation
+  const birthTimestamp = Date.UTC(year, month, day);
+  const nowTimestamp = Date.now();
   
   const lifeYears = lifeExpectancy[userCountry] || lifeExpectancy.DEFAULT;
   const totalHours = lifeYears * 365.25 * 24;
-  const birth = new Date(dob);
-  const now = new Date();
-  const hoursLived = Math.floor((now - birth) / (1000 * 60 * 60));
+  
+  // Calculate absolute delta hours directly
+  const hoursLived = Math.floor((nowTimestamp - birthTimestamp) / (1000 * 60 * 60));
   const hoursRemaining = Math.max(0, Math.floor(totalHours - hoursLived));
 
   document.getElementById("hoursRemainingDisplay").textContent = hoursRemaining.toLocaleString();
